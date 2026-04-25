@@ -1,3 +1,14 @@
+'use client';
+
+import { useRef } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useGSAP } from '@gsap/react';
+
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger);
+}
+
 function ArchitecturalDesignIcon() {
   return (
     <svg
@@ -220,34 +231,77 @@ const services = [
 ];
 
 export function ServicesSection() {
+  const containerRef = useRef<HTMLElement>(null);
+
+  useGSAP(() => {
+    if (!containerRef.current) return;
+
+    // Header animation: slide right & fade
+    gsap.fromTo(
+      '.service-header-text',
+      { opacity: 0, x: -30 },
+      {
+        opacity: 1,
+        x: 0,
+        duration: 1,
+        stagger: 0.15,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: 'top 80%',
+        },
+      }
+    );
+
+    // Cards animation: scale up, slightly rotate X (3D-like), fade in staggered
+    gsap.fromTo(
+      gsap.utils.toArray('.service-card'),
+      { opacity: 0, scale: 0.9, y: 40, rotationX: 15, transformOrigin: 'bottom center' },
+      {
+        opacity: 1,
+        scale: 1,
+        y: 0,
+        rotationX: 0,
+        duration: 0.9,
+        stagger: 0.15,
+        ease: 'back.out(1.2)',
+        scrollTrigger: {
+          trigger: '.services-grid',
+          start: 'top 85%',
+        },
+      }
+    );
+  }, { scope: containerRef });
+
   return (
     <section
       id="services"
+      ref={containerRef}
       className="bg-[rgba(255,255,255,0.015)] px-5 py-24 text-white sm:px-8 lg:px-12"
     >
       <div className="mx-auto max-w-7xl">
         <div className="mb-16 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <span className="mb-4 block text-[0.7rem] uppercase tracking-[0.3em] text-[#c9a96e]">
+            <span className="service-header-text mb-4 block text-[0.7rem] uppercase tracking-[0.3em] text-[#c9a96e]">
               What We Offer
             </span>
-            <h2 className="font-[var(--font-playfair-display)] text-[clamp(2rem,3vw,2.8rem)] leading-tight font-normal">
+            <h2 className="service-header-text font-[var(--font-playfair-display)] text-[clamp(2rem,3vw,2.8rem)] leading-tight font-normal">
               Our Services
             </h2>
           </div>
           <a
             href="#"
-            className="border-b border-[#6b6b6b] pb-0.5 text-[0.78rem] uppercase tracking-[0.15em] text-[#6b6b6b] transition hover:border-[#c9a96e] hover:text-[#c9a96e]"
+            className="service-header-text border-b border-[#6b6b6b] pb-0.5 text-[0.78rem] uppercase tracking-[0.15em] text-[#6b6b6b] transition hover:border-[#c9a96e] hover:text-[#c9a96e]"
           >
             All Services
           </a>
         </div>
 
-        <div className="grid gap-px bg-white/10 md:grid-cols-2 xl:grid-cols-4">
+        <div className="services-grid grid gap-px bg-white/10 md:grid-cols-2 xl:grid-cols-4 [perspective:1000px]">
           {services.map((service) => (
             <article
               key={service.number}
-              className="group relative overflow-hidden bg-[#0b0f14] px-8 py-10 transition-colors duration-400 hover:bg-[rgba(201,169,110,0.04)]"
+              className="service-card group relative overflow-hidden bg-[#0b0f14] px-8 py-10 transition-colors duration-400 hover:bg-[rgba(201,169,110,0.04)]"
             >
               <div className="absolute inset-x-0 bottom-0 h-0.5 origin-left scale-x-0 bg-[#c9a96e] transition-transform duration-400 group-hover:scale-x-100" />
               <span className="mb-8 block font-[var(--font-playfair-display)] text-[0.75rem] tracking-[0.1em] text-[#c9a96e]">

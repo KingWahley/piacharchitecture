@@ -77,12 +77,12 @@ export function ZoomParallax({ images }: ZoomParallaxProps) {
                 {(title || description) && (
                   <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/45 to-transparent px-4 pb-4 pt-10 text-white">
                     {title && (
-                      <h3 className="text-sm font-semibold tracking-[0.02em] md:text-base">
+                      <h3 className="text-sm font-semibold tracking-[0.02em] md:text-lg">
                         {title}
                       </h3>
                     )}
                     {description && (
-                      <p className="mt-1 max-w-[26ch] text-[11px] leading-4 text-white/75 md:text-xs ">
+                      <p className=" text-[11px] leading-4 text-white/75 md:text-xs">
                         {description}
                       </p>
                     )}

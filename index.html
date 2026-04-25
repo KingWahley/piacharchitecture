@@ -650,38 +650,88 @@
     transition: color 0.3s;
   }
   .client-name:hover { color: var(--accent); }
-  .blog-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
+  .blog-list {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
     margin-top: 3rem;
   }
   .blog-card {
-    border-top: 0.5px solid var(--glass-border);
-    padding-top: 1.5rem;
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr) minmax(0, 1.8fr);
+    gap: 2.5rem;
+    padding: 2.5rem 0;
+    border-bottom: 1px solid var(--glass-border);
+    align-items: start;
   }
-  .blog-cat {
-    font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase;
-    color: var(--accent); margin-bottom: 1rem;
+  .blog-card:first-child {
+    border-top: 1px solid var(--glass-border);
+  }
+  .blog-image-wrapper {
+    width: 100%;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    background: #111;
+  }
+  .blog-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+  .blog-card:hover .blog-image-wrapper img {
+    transform: scale(1.05);
+  }
+  .blog-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
   }
   .blog-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.15rem; font-weight: 400;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
     line-height: 1.4;
-    margin-bottom: 1rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--secondary);
     transition: color 0.3s;
-    cursor: default;
   }
   .blog-card:hover .blog-title { color: var(--accent); }
-  .blog-excerpt {
-    color: var(--muted);
-    font-size: 0.85rem;
-    line-height: 1.8;
-    margin-bottom: 1.5rem;
-  }
   .blog-date {
-    font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase;
+    font-size: 0.8rem;
     color: var(--muted);
+  }
+  .blog-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+  .blog-excerpt {
+    color: var(--secondary);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    opacity: 0.85;
+  }
+  .blog-btn {
+    display: inline-block;
+    padding: 0.85rem 1.6rem;
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--secondary);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    text-decoration: none;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+  }
+  .blog-btn:hover {
+    background: var(--secondary);
+    color: var(--primary);
+    border-color: var(--secondary);
   }
 
   /* ── CTA ── */
@@ -1395,24 +1445,32 @@
     </div>
     <a href="#" class="section-link">All Articles</a>
   </div>
-  <div class="blog-grid">
+  <div class="blog-list">
     <div class="blog-card reveal" style="transition-delay:0.1s">
-      <p class="blog-cat">Design Theory</p>
-      <h3 class="blog-title">The Return of Silence: Why Architecture is Learning to Listen Again</h3>
-      <p class="blog-excerpt">In an era of excess, the most radical architectural gesture might simply be restraint — and what it reveals about how we want to live.</p>
-      <span class="blog-date">March 2025</span>
+      <div class="blog-image-wrapper">
+        <img src="https://images.unsplash.com/photo-1518780664697-55e3ad937233?w=800&q=80" alt="Sustainable Architecture">
+      </div>
+      <div class="blog-meta">
+        <h3 class="blog-title">The Rise Of Sustainable Architecture</h3>
+        <span class="blog-date">April 2026</span>
+      </div>
+      <div class="blog-content">
+        <p class="blog-excerpt">Explore how our avant-garde approach to sustainable materials and passive energy design is setting a new global standard. We are reshaping urban landscapes by creating buildings that are both spectacular in form and carbon-neutral in function.</p>
+        <a href="#" class="blog-btn">READ MORE</a>
+      </div>
     </div>
     <div class="blog-card reveal" style="transition-delay:0.2s">
-      <p class="blog-cat">Materials</p>
-      <h3 class="blog-title">Concrete, Reimagined: A New Generation of Structural Poetry</h3>
-      <p class="blog-excerpt">From ultra-high performance composites to bioengineered binders, concrete is shedding its brutalist reputation and emerging as a material of nuance.</p>
-      <span class="blog-date">February 2025</span>
-    </div>
-    <div class="blog-card reveal" style="transition-delay:0.3s">
-      <p class="blog-cat">Urban Future</p>
-      <h3 class="blog-title">The 15-Minute City: Blueprint, Promise, and Compromise</h3>
-      <p class="blog-excerpt">Paris made it famous. Now cities everywhere are grappling with what proximity-based urban planning actually requires — and who it serves.</p>
-      <span class="blog-date">January 2025</span>
+      <div class="blog-image-wrapper">
+        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80" alt="Modern Residential Design">
+      </div>
+      <div class="blog-meta">
+        <h3 class="blog-title">Minimalism In Modern Residential Design</h3>
+        <span class="blog-date">March 2026</span>
+      </div>
+      <div class="blog-content">
+        <p class="blog-excerpt">Minimalist architecture continues to be the ultimate expression of luxury. Discover the philosophy behind our enduring designs where clean lines, vast open spaces, and curated natural light converge to foster profound tranquility.</p>
+        <a href="#" class="blog-btn">READ MORE</a>
+      </div>
     </div>
   </div>
 </section>
@@ -1461,14 +1519,14 @@
   <div class="reveal" style="transition-delay:0.3s">
     <p class="footer-col-title">Contact</p>
     <ul class="footer-links">
-      <li><a href="mailto:studio@forma.com">studio@forma.com</a></li>
-      <li><a href="tel:+442071234567">+44 20 7123 4567</a></li>
-      <li><a href="#">12 Beak Street, London</a></li>
+      <li><a href="mailto:studio@forma.com">studio@pieach.com</a></li>
+      <li><a href="tel:+442071234567">+1234567891</a></li>
+      <li><a href="#">12 Beak Street, Ikoyi, Lagos</a></li>
     </ul>
   </div>
 </footer>
 <div class="footer-bottom">
-  <span class="footer-copy">© 2025 FORMA Architecture Studio. All rights reserved.</span>
+  <span class="footer-copy">© 2026 PIEACHA LIMITED. All rights reserved.</span>
   <span class="footer-copy">Privacy Policy · Terms of Use</span>
 </div>
 
