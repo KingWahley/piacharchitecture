@@ -22,8 +22,11 @@ const cormorantGaramond = Cormorant_Garamond({
 });
 
 export const metadata: Metadata = {
-  title: "DNOIN.INC",
-  description: "Architecture studio site rebuilt with Next.js, Tailwind, shadcn, and a zoom parallax projects section.",
+  title: "PIEACH LIMITED",
+  description: "Architecture firm based in lago Nigeria.",
+  icons: {
+    icon: "/images/mainlogo1.png",
+  },
 };
 
 export default function RootLayout({

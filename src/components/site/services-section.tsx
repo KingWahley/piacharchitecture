@@ -291,7 +291,7 @@ export function ServicesSection() {
           </div>
           <a
             href="#"
-            className="service-header-text border-b border-[#6b6b6b] pb-0.5 text-[0.78rem] uppercase tracking-[0.15em] text-[#6b6b6b] transition hover:border-[#c9a96e] hover:text-[#c9a96e]"
+            className="service-header-text hidden sm:block border-b border-[#6b6b6b] pb-0.5 text-[0.78rem] uppercase tracking-[0.15em] text-[#6b6b6b] transition hover:border-[#c9a96e] hover:text-[#c9a96e]"
           >
             All Services
           </a>
@@ -316,6 +316,15 @@ export function ServicesSection() {
               </p>
             </article>
           ))}
+        </div>
+
+        <div className="mt-12 flex justify-center sm:hidden">
+          <a
+            href="#"
+            className="border-b border-[#6b6b6b] pb-0.5 text-[0.78rem] uppercase tracking-[0.15em] text-[#6b6b6b] transition hover:border-[#c9a96e] hover:text-[#c9a96e]"
+          >
+            All Services
+          </a>
         </div>
       </div>
     </section>

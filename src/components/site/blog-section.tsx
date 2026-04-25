@@ -1,4 +1,13 @@
+"use client";
+
+import { useEffect, useRef } from 'react';
 import Link from 'next/link';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 const journalEntries = [
   {
@@ -18,10 +27,63 @@ const journalEntries = [
 ];
 
 export function BlogSection() {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Animate the heading
+      gsap.from(".blog-heading", {
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+        },
+        y: 40,
+        opacity: 0,
+        duration: 1,
+        ease: "power3.out",
+      });
+
+      // Animate each article independently
+      const articles = gsap.utils.toArray<HTMLElement>("article");
+      articles.forEach((article) => {
+        const imgWrapper = article.querySelector(".image-wrapper");
+        const textContent = article.querySelectorAll(".article-content");
+        
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: article,
+            start: "top 85%",
+          }
+        });
+
+        if (imgWrapper) {
+          tl.from(imgWrapper, {
+            scale: 0.5,
+            opacity: 0,
+            duration: 1.2,
+            ease: "bounce.out"
+          });
+        }
+        
+        if (textContent.length) {
+          tl.from(textContent, {
+            y: 30,
+            opacity: 0,
+            duration: 0.8,
+            stagger: 0.2,
+            ease: "power2.out"
+          }, "-=0.8");
+        }
+      });
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section id="blog" className="bg-[#f5f4f0] px-5 py-24 text-[#1a1a1a] sm:px-8 lg:px-12">
+    <section ref={sectionRef} id="blog" className="bg-[#f5f4f0] px-5 py-24 text-[#1a1a1a] sm:px-8 lg:px-12">
       <div className="mx-auto max-w-7xl">
-        <div className="mb-16 text-center">
+        <div className="mb-16 text-center blog-heading">
           <h2 className="font-[var(--font-dm-sans)] text-5xl font-medium tracking-[0.05em] text-[#1a1a1a] sm:text-[4.5rem]">
             BLOG
           </h2>
@@ -33,7 +95,7 @@ export function BlogSection() {
               key={entry.title} 
               className={`grid items-start gap-10 py-12 md:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)_minmax(0,1.8fr)] border-[#ccc] ${index === 0 ? 'border-t-2' : 'border-t'} ${index === journalEntries.length - 1 ? 'border-b' : ''}`}
             >
-              <div className="aspect-[4/3] w-full overflow-hidden bg-[#111]">
+              <div className="aspect-[4/3] w-full overflow-hidden bg-[#111] image-wrapper">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img 
                   src={entry.image} 
@@ -42,7 +104,7 @@ export function BlogSection() {
                 />
               </div>
 
-              <div className="flex flex-col gap-4">
+              <div className="flex flex-col gap-4 article-content">
                 <h3 className="font-[var(--font-dm-sans)] text-[1.4rem] font-bold leading-[1.3] tracking-[0.05em] uppercase text-[#1a1a1a] transition-colors duration-300 hover:text-[#c9a96e]">
                   {entry.title}
                 </h3>
@@ -51,7 +113,7 @@ export function BlogSection() {
                 </span>
               </div>
 
-              <div className="flex flex-col items-start gap-6">
+              <div className="flex flex-col items-start gap-6 article-content">
                 <p className="text-[1.05rem] leading-[1.6] text-[#444]">
                   {entry.excerpt}
                 </p>

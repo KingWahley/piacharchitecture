@@ -1,11 +1,57 @@
+"use client";
+
+import { useEffect, useRef } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger);
+}
+
 export function CtaSection() {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    if (!sectionRef.current) return;
+
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+        }
+      });
+
+      // Background animation
+      tl.from(".cta-bg", {
+        scale: 1.1,
+        opacity: 0,
+        duration: 1.5,
+        ease: "power2.out"
+      }, 0);
+
+      // Stagger text and button
+      tl.from(".cta-content > *", {
+        y: 40,
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.2,
+        ease: "power3.out"
+      }, 0.2);
+      
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
     <section
+      ref={sectionRef}
       id="cta"
       className="relative overflow-hidden px-5 py-32 text-center sm:px-8 lg:px-12"
     >
       <div
-        className="absolute inset-0 opacity-25"
+        className="cta-bg absolute inset-0 opacity-25"
         style={{
           backgroundImage:
             "radial-gradient(ellipse at center, rgba(201,169,110,0.08) 0%, transparent 70%), url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1600&q=80')",
@@ -13,7 +59,7 @@ export function CtaSection() {
           backgroundSize: 'cover',
         }}
       />
-      <div className="relative z-10 mx-auto max-w-3xl">
+      <div className="cta-content relative z-10 mx-auto max-w-3xl">
         <p className="mb-6 text-[0.7rem] uppercase tracking-[0.3em] text-[#c9a96e]">
           Let&apos;s Build Together
         </p>

@@ -75,22 +75,15 @@ export function AboutSection() {
       ref={sectionRef}
       className="bg-[#f5f4f0] px-5 py-14 text-[#232730] sm:px-8 lg:px-12 lg:py-20 overflow-hidden"
     >
-      <div className="mx-auto max-w-7xl">
-        <div className="grid gap-12 lg:grid-cols-[minmax(280px,0.92fr)_minmax(0,1.95fr)]">
-          <div className="about-header-line">
+      <div ref={contentRef} className="mx-auto max-w-7xl grid gap-12 lg:grid-cols-[minmax(280px,0.92fr)_minmax(0,1.95fr)] lg:gap-12">
+        <div className="flex flex-col">
+          <div className="about-header-line mb-8 lg:mb-12">
             <div className="flex items-center justify-between gap-6 border-b border-[#232730]/70 pb-3 text-sm uppercase tracking-[0.02em]">
               <span>Highlights</span>
               <span>02 / 03</span>
             </div>
           </div>
-          <div className="about-header-line">
-            <div className="border-b border-[#232730]/70 pb-3 text-sm uppercase tracking-[0.02em]">
-              About Us
-            </div>
-          </div>
-        </div>
-
-        <div ref={contentRef} className="mt-12 grid gap-12 lg:grid-cols-[minmax(280px,0.92fr)_minmax(0,1.95fr)]">
+          
           <aside className="about-text-content">
             <span className="about-number block text-[clamp(3.7rem,6.5vw,5.25rem)] font-bold leading-[0.92] tracking-[-0.06em]">
               15
@@ -119,8 +112,16 @@ export function AboutSection() {
               </button>
             </div>
           </aside>
+        </div>
 
-          <div className="about-text-content">
+        <div className="flex flex-col mt-4 lg:mt-0">
+          <div className="about-header-line mb-8 lg:mb-12">
+            <div className="border-b border-[#232730]/70 pb-3 text-sm uppercase tracking-[0.02em]">
+              About Us
+            </div>
+          </div>
+          
+          <div className="about-text-content flex-1">
             <p className="max-w-5xl text-[clamp(1.05rem,1.6vw,1.3rem)] leading-[1.65] text-[#2c3139]">
               Established in 1997, PIEACH Limited is a multidisciplinary
               studio of visionary architects, master planners, and interior

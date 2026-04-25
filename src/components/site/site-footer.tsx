@@ -1,4 +1,13 @@
+"use client";
+
 import Image from 'next/image';
+import { useEffect, useRef } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 const InstagramIcon = ({ className }: { className?: string }) => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
@@ -22,8 +31,6 @@ const TwitterIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
-
-
 const footerNavigation = ['Studio', 'Services', 'Projects', 'Journal'];
 const footerServices = [
   'Architectural Design',
@@ -38,10 +45,46 @@ const footerSocials = [
 ];
 
 export function SiteFooter() {
+  const footerRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    if (!footerRef.current) return;
+
+    const ctx = gsap.context(() => {
+      // Animate the main footer columns
+      gsap.from(".footer-column", {
+        scrollTrigger: {
+          trigger: footerRef.current,
+          start: "top 85%",
+        },
+        y: 40,
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.15,
+        ease: "power3.out",
+      });
+
+      // Animate the bottom legal bar
+      gsap.from(".footer-legal", {
+        scrollTrigger: {
+          trigger: footerRef.current,
+          start: "top 95%",
+        },
+        opacity: 0,
+        y: 20,
+        duration: 0.8,
+        delay: 0.4,
+        ease: "power2.out",
+      });
+    }, footerRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <>
-      <footer className="grid gap-12 border-t border-white/10 bg-[#090d12] px-5 py-16 text-white md:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1fr] sm:px-8 lg:px-12">
-        <div>
+    <footer ref={footerRef} className="bg-[#090d12]">
+      <div className="grid gap-12 border-t border-white/10 px-5 py-16 text-white md:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1fr] sm:px-8 lg:px-12">
+        <div className="footer-column">
           <a
             href="#"
             className="mb-4 block"
@@ -65,7 +108,7 @@ export function SiteFooter() {
                 <a
                   key={item.name}
                   href={item.href}
-                  className="flex h-9 w-9 items-center justify-center border border-white/10 text-[#6b6b6b] transition hover:border-[#c9a96e] hover:text-[#c9a96e]"
+                  className="flex h-9 w-9 items-center justify-center border border-white/10 text-[#6b6b6b] transition-colors hover:border-[#c9a96e] hover:text-[#c9a96e]"
                   aria-label={item.name}
                 >
                   <Icon className="h-4 w-4" />
@@ -75,7 +118,7 @@ export function SiteFooter() {
           </div>
         </div>
 
-        <div>
+        <div className="footer-column">
           <p className="mb-6 text-[0.7rem] uppercase tracking-[0.25em] text-[#c9a96e]">
             Navigate
           </p>
@@ -84,7 +127,7 @@ export function SiteFooter() {
               <li key={item}>
                 <a
                   href={`#${item === 'Studio' ? 'about' : item === 'Journal' ? 'blog' : item.toLowerCase()}`}
-                  className="text-[0.85rem] text-[#6b6b6b] transition hover:text-[#f5f2ec]"
+                  className="text-[0.85rem] text-[#6b6b6b] transition-colors hover:text-[#f5f2ec]"
                 >
                   {item}
                 </a>
@@ -93,7 +136,7 @@ export function SiteFooter() {
           </ul>
         </div>
 
-        <div>
+        <div className="footer-column">
           <p className="mb-6 text-[0.7rem] uppercase tracking-[0.25em] text-[#c9a96e]">
             Services
           </p>
@@ -102,7 +145,7 @@ export function SiteFooter() {
               <li key={item}>
                 <a
                   href="#services"
-                  className="text-[0.85rem] text-[#6b6b6b] transition hover:text-[#f5f2ec]"
+                  className="text-[0.85rem] text-[#6b6b6b] transition-colors hover:text-[#f5f2ec]"
                 >
                   {item}
                 </a>
@@ -111,7 +154,7 @@ export function SiteFooter() {
           </ul>
         </div>
 
-        <div>
+        <div className="footer-column">
           <p className="mb-6 text-[0.7rem] uppercase tracking-[0.25em] text-[#c9a96e]">
             Contact
           </p>
@@ -119,7 +162,7 @@ export function SiteFooter() {
             <li>
               <a
                 href="mailto:studio@pieach.com"
-                className="text-[0.85rem] text-[#6b6b6b] transition hover:text-[#f5f2ec]"
+                className="text-[0.85rem] text-[#6b6b6b] transition-colors hover:text-[#f5f2ec]"
               >
                 studio@pieach.com
               </a>
@@ -127,7 +170,7 @@ export function SiteFooter() {
             <li>
               <a
                 href="tel:+442071234567"
-                className="text-[0.85rem] text-[#6b6b6b] transition hover:text-[#f5f2ec]"
+                className="text-[0.85rem] text-[#6b6b6b] transition-colors hover:text-[#f5f2ec]"
               >
                 +234 813 123 1213
               </a>
@@ -135,16 +178,16 @@ export function SiteFooter() {
             <li>
               <a
                 href="#"
-                className="text-[0.85rem] text-[#6b6b6b] transition hover:text-[#f5f2ec]"
+                className="text-[0.85rem] text-[#6b6b6b] transition-colors hover:text-[#f5f2ec]"
               >
                 12 Beak Street, Lagos
               </a>
             </li>
           </ul>
         </div>
-      </footer>
+      </div>
 
-      <div className="flex flex-col gap-3 border-t border-white/10 bg-[#090d12] px-5 py-6 text-[#6b6b6b] sm:px-8 md:flex-row md:items-center md:justify-between lg:px-12">
+      <div className="footer-legal flex flex-col gap-3 border-t border-white/10 px-5 py-6 text-[#6b6b6b] sm:px-8 md:flex-row md:items-center md:justify-between lg:px-12">
         <span className="text-[0.72rem] tracking-[0.1em]">
           © {new Date().getFullYear()} PIEACH LIMITED. All rights reserved.
         </span>
@@ -152,6 +195,6 @@ export function SiteFooter() {
           Privacy Policy · Terms of Use
         </span>
       </div>
-    </>
+    </footer>
   );
 }
