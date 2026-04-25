@@ -33,7 +33,7 @@ export function ZoomParallax({ images }: ZoomParallaxProps) {
   });
 
   const scaleDesktopCenter = useTransform(scrollYProgress, [0, 1], [1, 4]);
-  const scaleMobileCenter = useTransform(scrollYProgress, [0, 1], [1, 2.38]);
+  const scaleMobileCenter = useTransform(scrollYProgress, [0, 1], [1, 2.55]);
   
   const scale5 = useTransform(scrollYProgress, [0, 1], [1, 5]);
   const scale6 = useTransform(scrollYProgress, [0, 1], [1, 6]);
@@ -54,31 +54,31 @@ export function ZoomParallax({ images }: ZoomParallaxProps) {
               style={{ scale }}
               className={`absolute top-0 flex h-full w-full items-center justify-center ${
                 index === 1
-                  ? "[&>div]:!-top-[34vh] [&>div]:!left-[8vw] [&>div]:!h-[35vh] [&>div]:!w-[32vw] md:[&>div]:!-top-[30vh] md:[&>div]:!left-[5vw] md:[&>div]:!h-[30vh] md:[&>div]:!w-[35vw]"
+                  ? "[&>div]:!-top-[40vh] [&>div]:!left-[10vw] [&>div]:!h-[35vh] [&>div]:!w-[32vw] md:[&>div]:!-top-[30vh] md:[&>div]:!left-[5vw] md:[&>div]:!h-[30vh] md:[&>div]:!w-[35vw]"
                   : ""
               } ${
                 index === 2
-                  ? "[&>div]:!-top-[8vh] [&>div]:!-left-[36vw] [&>div]:!h-[45vh] [&>div]:!w-[24vw] md:[&>div]:!-top-[10vh] md:[&>div]:!-left-[25vw] md:[&>div]:!h-[45vh] md:[&>div]:!w-[20vw]"
+                  ? "[&>div]:!-top-[8vh] [&>div]:!-left-[42vw] [&>div]:!h-[45vh] [&>div]:!w-[24vw] md:[&>div]:!-top-[10vh] md:[&>div]:!-left-[25vw] md:[&>div]:!h-[45vh] md:[&>div]:!w-[20vw]"
                   : ""
               } ${
                 index === 3
-                  ? "[&>div]:!top-[2vh] [&>div]:!left-[38vw] [&>div]:!h-[22vh] [&>div]:!w-[28vw] md:[&>div]:!left-[27.5vw] md:[&>div]:!h-[25vh] md:[&>div]:!w-[25vw]"
+                  ? "[&>div]:!top-[2vh] [&>div]:!left-[44vw] [&>div]:!h-[22vh] [&>div]:!w-[28vw] md:[&>div]:!left-[27.5vw] md:[&>div]:!h-[25vh] md:[&>div]:!w-[25vw]"
                   : ""
               } ${
                 index === 4
-                  ? "[&>div]:!top-[28vh] [&>div]:!-left-[28vw] [&>div]:!h-[22vh] [&>div]:!w-[35vw] md:[&>div]:!top-[27.5vh] md:[&>div]:!left-[5vw] md:[&>div]:!h-[25vh] md:[&>div]:!w-[20vw]"
+                  ? "[&>div]:!top-[34vh] [&>div]:!-left-[28vw] [&>div]:!h-[22vh] [&>div]:!w-[35vw] md:[&>div]:!top-[27.5vh] md:[&>div]:!left-[5vw] md:[&>div]:!h-[25vh] md:[&>div]:!w-[20vw]"
                   : ""
               } ${
                 index === 5
-                  ? "[&>div]:!top-[31vh] [&>div]:!left-[6vw] [&>div]:!h-[28vh] [&>div]:!w-[24vw] md:[&>div]:!top-[27.5vh] md:[&>div]:!-left-[22.5vw] md:[&>div]:!h-[25vh] md:[&>div]:!w-[30vw]"
+                  ? "[&>div]:!top-[37vh] [&>div]:!left-[10vw] [&>div]:!h-[28vh] [&>div]:!w-[24vw] md:[&>div]:!top-[27.5vh] md:[&>div]:!-left-[22.5vw] md:[&>div]:!h-[25vh] md:[&>div]:!w-[30vw]"
                   : ""
               } ${
                 index === 6
-                  ? "[&>div]:!top-[28vh] [&>div]:!left-[31vw] [&>div]:!h-[18vh] [&>div]:!w-[18vw] md:[&>div]:!top-[22.5vh] md:[&>div]:!left-[25vw] md:[&>div]:!h-[15vh] md:[&>div]:!w-[15vw]"
+                  ? "[&>div]:!top-[34vh] [&>div]:!left-[35vw] [&>div]:!h-[18vh] [&>div]:!w-[18vw] md:[&>div]:!top-[22.5vh] md:[&>div]:!left-[25vw] md:[&>div]:!h-[15vh] md:[&>div]:!w-[15vw]"
                   : ""
               }`}
             >
-              <div className="group relative h-[28vh] w-[42vw] overflow-hidden rounded-xs shadow-[0_40px_100px_rgba(0,0,0,0.35)] md:h-[25vh] md:w-[25vw]">
+              <div className="group relative h-[40vh] w-[55vw] overflow-hidden rounded-xs shadow-[0_40px_100px_rgba(0,0,0,0.35)] md:h-[25vh] md:w-[25vw]">
                 <Image
                   src={src || "/placeholder.svg"}
                   alt={alt || `Parallax image ${index + 1}`}
