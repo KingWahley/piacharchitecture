@@ -102,19 +102,6 @@ export function ZoomParallaxDemo() {
       </div>
 
       <ZoomParallax images={images} />
-
-      <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-6 px-5 pb-20 pt-8 text-white/75 sm:px-8 lg:px-12">
-        <p className="max-w-xl text-sm leading-7 text-white/55">
-         
-        </p>
-        <a
-          href="#cta"
-          className="inline-flex items-center gap-3 rounded-full border border-white/20 px-5 py-3 text-sm font-medium text-white transition hover:border-white/45 hover:bg-white/5"
-        >
-          See all projects
-          <ArrowUpRight className="size-4" />
-        </a>
-      </div>
     </section>
   );
 }

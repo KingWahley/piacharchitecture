@@ -25,11 +25,11 @@ export function ClientsSection() {
           </div>
 
         <div className="overflow-hidden border-y border-white/10 py-12">
-          <div className="animate-[marquee_30s_linear_infinite] flex w-max items-center gap-20">
+          <div className="animate-[marquee_30s_linear_infinite] flex w-max items-center gap-12">
             {marqueeItems.map((logoUrl, index) => (
               <div
                 key={`${logoUrl}-${index}`}
-                className="relative h-16 w-32 shrink-0 opacity-60 grayscale transition duration-300 hover:opacity-100 hover:grayscale-0"
+                className="relative h-24 w-48 shrink-0 opacity-60 grayscale transition duration-300 hover:opacity-100 hover:grayscale-0"
               >
                 <Image
                   src={logoUrl}

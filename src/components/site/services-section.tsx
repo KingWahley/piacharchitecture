@@ -271,6 +271,23 @@ export function ServicesSection() {
         },
       }
     );
+
+    // Button pulse animation
+    gsap.fromTo(
+      '.service-all-btn',
+      { scale: 1 },
+      {
+        scale: 1.08,
+        duration: 0.35,
+        yoyo: true,
+        repeat: 1,
+        ease: 'power2.inOut',
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: 'top 75%',
+        },
+      }
+    );
   }, { scope: containerRef });
 
   return (
@@ -291,7 +308,7 @@ export function ServicesSection() {
           </div>
           <a
             href="#"
-            className="service-header-text hidden sm:block border-b border-[#6b6b6b] pb-0.5 text-[0.78rem] uppercase tracking-[0.15em] text-[#6b6b6b] transition hover:border-[#c9a96e] hover:text-[#c9a96e]"
+            className="service-header-text service-all-btn hidden sm:inline-block animate-[pulse-border_3s_infinite] relative z-0 overflow-hidden border border-[#c9a96e] px-12 py-[1.1rem] text-[0.78rem] uppercase tracking-[0.2em] text-[#f5f2ec] transition-colors duration-400 before:absolute before:inset-0 before:-z-10 before:origin-left before:scale-x-0 before:bg-[#c9a96e] before:transition-transform before:duration-400 hover:text-[#0b0f14] hover:before:scale-x-100"
           >
             All Services
           </a>
@@ -304,14 +321,14 @@ export function ServicesSection() {
               className="service-card group relative overflow-hidden bg-[#0b0f14] px-8 py-10 transition-colors duration-400 hover:bg-[rgba(201,169,110,0.04)]"
             >
               <div className="absolute inset-x-0 bottom-0 h-0.5 origin-left scale-x-0 bg-[#c9a96e] transition-transform duration-400 group-hover:scale-x-100" />
-              <span className="mb-8 block font-[var(--font-playfair-display)] text-[0.75rem] tracking-[0.1em] text-[#c9a96e]">
+              <span className="mb-8 block font-[var(--font-playfair-display)] text-[0.75rem] tracking-[0.1em] text-[#c9a96e] transition-colors duration-400 group-hover:text-white">
                 {service.number}
               </span>
               {service.icon}
-              <h3 className="mb-4 font-[var(--font-playfair-display)] text-[1.25rem] leading-[1.3] font-normal">
+              <h3 className="mb-4 font-[var(--font-playfair-display)] text-[1.25rem] leading-[1.3] font-normal transition-colors duration-400 group-hover:text-white">
                 {service.name}
               </h3>
-              <p className="text-[0.85rem] leading-[1.8] text-[#6b6b6b]">
+              <p className="text-[0.85rem] leading-[1.8] text-[#6b6b6b] transition-colors duration-400 group-hover:text-white">
                 {service.description}
               </p>
             </article>
@@ -321,7 +338,7 @@ export function ServicesSection() {
         <div className="mt-12 flex justify-center sm:hidden">
           <a
             href="#"
-            className="border-b border-[#6b6b6b] pb-0.5 text-[0.78rem] uppercase tracking-[0.15em] text-[#6b6b6b] transition hover:border-[#c9a96e] hover:text-[#c9a96e]"
+            className="service-all-btn animate-[pulse-border_3s_infinite] relative z-0 inline-block overflow-hidden border border-[#c9a96e] px-12 py-[1.1rem] text-[0.78rem] uppercase tracking-[0.2em] text-[#f5f2ec] transition-colors duration-400 before:absolute before:inset-0 before:-z-10 before:origin-left before:scale-x-0 before:bg-[#c9a96e] before:transition-transform before:duration-400 hover:text-[#0b0f14] hover:before:scale-x-100"
           >
             All Services
           </a>

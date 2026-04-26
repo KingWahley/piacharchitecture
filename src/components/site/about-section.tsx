@@ -78,7 +78,7 @@ export function AboutSection() {
       <div ref={contentRef} className="mx-auto max-w-7xl grid gap-12 lg:grid-cols-[minmax(280px,0.92fr)_minmax(0,1.95fr)] lg:gap-12">
         <div className="flex flex-col">
           <div className="about-header-line mb-8 lg:mb-12">
-            <div className="flex items-center justify-between gap-6 border-b border-[#232730]/70 pb-3 text-sm uppercase tracking-[0.02em]">
+            <div className="flex items-center justify-between gap-6 border-b border-[#232730]/70 pb-3 text-sm md:text-2xl font-bold uppercase tracking-[0.02em]">
               <span>Highlights</span>
               <span>02 / 03</span>
             </div>
@@ -116,7 +116,7 @@ export function AboutSection() {
 
         <div className="flex flex-col mt-4 lg:mt-0">
           <div className="about-header-line mb-8 lg:mb-12">
-            <div className="border-b border-[#232730]/70 pb-3 text-sm uppercase tracking-[0.02em]">
+            <div className="border-b border-[#232730]/70 pb-3 text-sm uppercase md:text-2xl font-bold tracking-[0.02em]">
               About Us
             </div>
           </div>
