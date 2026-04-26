@@ -1,11 +1,11 @@
 import Image from 'next/image';
 
 const clientLogos = [
-  '/client-logos/airtel.png',
-  '/client-logos/Cadwell.png',
-  '/client-logos/Chrome-Oil-Services.png',
+  '/client-logos/airtellogo.png',
+  '/client-logos/Cadwelllogo.png',
+  '/client-logos/Chrome-logo.png',
   '/client-logos/Transcorp-Hotels.png',
-  '/client-logos/UBA.png',
+  '/client-logos/ubalogo.png',
   '/client-logos/ogun-state.png',
 ];
 
