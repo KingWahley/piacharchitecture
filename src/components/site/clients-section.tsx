@@ -1,8 +1,8 @@
 import Image from 'next/image';
 
 const clientLogos = [
-  '/client-logos/1604481877-59-airtel-nigeria-customer-care.jpg',
-  '/client-logos/Cadwell-e1696436327724.jpg',
+  '/client-logos/airtel.png',
+  '/client-logos/Cadwell.png',
   '/client-logos/Chrome-Oil-Services.png',
   '/client-logos/Transcorp-Hotels.png',
   '/client-logos/UBA.png',
@@ -29,7 +29,7 @@ export function ClientsSection() {
             {marqueeItems.map((logoUrl, index) => (
               <div
                 key={`${logoUrl}-${index}`}
-                className="relative h-24 w-48 shrink-0 opacity-60 grayscale transition duration-300 hover:opacity-100 hover:grayscale-0"
+                className="relative h-24 w-48 shrink-0 opacity-80  transition duration-300 hover:opacity-100 hover:grayscale-0"
               >
                 <Image
                   src={logoUrl}
