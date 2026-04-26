@@ -85,7 +85,7 @@ export function BlogSection() {
       <div className="mx-auto max-w-7xl">
         <div className="mb-16 text-center blog-heading">
           <h2 className="font-[var(--font-dm-sans)] text-5xl font-medium tracking-[0.05em] text-[#1a1a1a] sm:text-[4.5rem]">
-            BLOG
+            NEWS
           </h2>
         </div>
 
