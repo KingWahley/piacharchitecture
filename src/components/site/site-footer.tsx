@@ -169,10 +169,10 @@ export function SiteFooter() {
             </li>
             <li>
               <a
-                href="tel:+442071234567"
+                href="tel:+2348164536434"
                 className="text-[0.85rem] text-[#6b6b6b] transition-colors hover:text-[#f5f2ec]"
               >
-                +234 813 123 1213
+                +234 (0) 816 453 6434
               </a>
             </li>
             <li>
@@ -180,7 +180,7 @@ export function SiteFooter() {
                 href="#"
                 className="text-[0.85rem] text-[#6b6b6b] transition-colors hover:text-[#f5f2ec]"
               >
-                12 Beak Street, Lagos
+                1st Floor, 274A Kofo Abayomi Street, Victoria Island, Lagos, Nigeria.
               </a>
             </li>
           </ul>
